@@ -1,13 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
+import 'package:geoao/src/data/json/provinces.dart';
 import 'package:geoao/src/data/models/province_model.dart';
 
+/// A service tha provides data for provinces
 class ProvinceService {
+
+  /// Loads provinces from local file [provinces.json]
+  ///
+  /// Throws [Exception] if there was any error loading the file
   Future<String> _loadProvincesFromAsset() async {
     try {
-      return await rootBundle.loadString("assets/json/provinces.json");
+      return jsonEncode(provinces);
     } catch(e, stackTrace) {
       print("ERROR loading from assets");
       print(e);
@@ -18,10 +23,9 @@ class ProvinceService {
 
   }
 
-  Future<void> _loadProvincesFromNetwork() async {
-    /// TODO: Implement load from network
-  }
-
+  /// Loads provinces
+  ///
+  /// Throws [FlutterError] if there was any error loading the provinces.
   Future<ProvincesModel> _loadProvinces() async {
     var res = await _loadProvincesFromAsset();
 
@@ -32,6 +36,9 @@ class ProvinceService {
     return null;
   }
 
+  /// Gets the provinces
+  ///
+  /// Throws [FlutterError] if there was any error loading the provinces.
   getProvinces() async {
     var provincesModel = await _loadProvinces();
 

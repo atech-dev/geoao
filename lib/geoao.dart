@@ -13,7 +13,10 @@ import 'package:geoao/src/data/services/province_service.dart';
 /// Geolocation Angola - Geoao
 /// A package that uses geoao API aiming to expose all geolocation data referring to Angola
 class Geoao {
+  /// The province service provider
   ProvinceService _provinceService;
+
+  /// The county service provider
   CountyService _countyService;
 
   Geoao() {

@@ -1,7 +1,7 @@
 name: geoao
 description: A geolocation Package providing same functionalities as GEOAO API
 version: 0.0.1
-author: Josué Capita<josuemanuelcapita@gmail.com>
+# author: Josué Capita<josuemanuelcapita@gmail.com>
 homepage: https://github.com/atech-dev/geoao.git
 
 environment:
@@ -15,6 +15,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.11.0
 
 flutter:
 

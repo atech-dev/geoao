@@ -1,13 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:geoao/src/data/json/counties.dart';
 import 'package:geoao/src/data/models/county_model.dart';
 
+/// A service tha provides data for counties
 class CountyService {
+
+  /// Loads counties from local file [counties.json]
+  ///
+  /// Throws [Exception] if there was any error loading the file
   Future<String> _loadCountiesFromAsset() async {
     try {
-      return await rootBundle.loadString("assets/json/counties.json");
+      return jsonEncode(counties);
     } catch(e, stackTrace) {
       print("ERROR loading from assets");
       print(e);
@@ -17,10 +22,9 @@ class CountyService {
     }
   }
 
-  Future<void> _loadProvincesFromNetwork() async {
-    /// TODO: Implement load from network
-  }
-
+  /// Gets the counties by province id
+  ///
+  /// Throws [FlutterError] if there was any error loading the counties.
   Future<CountiesModel> _loadCounties() async {
     var res = await _loadCountiesFromAsset();
 
@@ -31,6 +35,9 @@ class CountyService {
     return null;
   }
 
+  /// Gets the counties by province id
+  ///
+  /// Throws [FlutterError] if there was any error loading the counties.
   Future<List<CountyModel>> getCounties(int provinceId) async {
     var countiesModel = await _loadCounties();
 
@@ -43,6 +50,9 @@ class CountyService {
     }
   }
 
+  /// Get county by its id
+  ///
+  /// Throws [FlutterError] if there was any error loading the county data.
   Future<CountyModel> getCountyById(int countyId) async {
     var countiesModel = await _loadCounties();
 
@@ -54,4 +64,9 @@ class CountyService {
       throw FlutterError("Error loading county.");
     }
   }
+
+  /// TODO: Load counties from API
+  ///
+  /// Throws [Exception] if there was any error loading the file.
+  /// Using the [http] package
 }
