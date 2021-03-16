@@ -1,6 +1,6 @@
 name: geoao
 description: A geolocation Package providing same functionalities as GEOAO API
-version: 0.0.1
+version: 0.0.1+1
 # author: Josué Capita<josuemanuelcapita@gmail.com>
 homepage: https://github.com/atech-dev/geoao.git
 
