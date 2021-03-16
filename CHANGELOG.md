@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 2021-03-16
 
-* TODO: Describe initial release.
+* Initial version
+* Geoao has getProvinces method
+* Geoao has getCounties method
+* Geoao has getCountyByProvince method
+* Geoao loads only from local asset
+
